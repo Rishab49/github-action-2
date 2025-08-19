@@ -24,9 +24,9 @@ jobs:
 
       - name: login to dockerhub
         uses: docker/login-actions@v3
-          with:
-           username: ${{secrets.DOCKERHUB_USERNAME}}
-           password: ${{secrets.DOCKERHUB_PASSWORD}}
+        with:
+         username: ${{secrets.DOCKERHUB_USERNAME}}
+         password: ${{secrets.DOCKERHUB_PASSWORD}}
 
 
       - name : push to dockerhub
