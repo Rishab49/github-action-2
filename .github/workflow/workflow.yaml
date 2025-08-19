@@ -1,0 +1,35 @@
+name: github-workflow-2
+on : 
+ push : 
+  branches:
+    - master
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -name: checkout
+       uses: actions/checkout@v4
+
+      -name: installing python
+       uses : actions/setup-python@v5
+
+      - name: installing dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: building image
+        run: docker build -t rajrishab/github-action-2 .
+
+        -name: login to dockerhub
+         uses: docker/login-actions@v3
+         with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+
+
+        -name : push to dockerhub
+         run: docker push rajrishab/github-action-2
+
+
