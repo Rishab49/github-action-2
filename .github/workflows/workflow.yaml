@@ -34,4 +34,5 @@ jobs:
 
 
       - name: trigger jenkins
-        run: curl -X POST -H "Content-Type: application/json" -d '{"event_type": "build_successful", "repository": "${{ github.repository }}"}' ${{ secrets.WEBHOOK_URL }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"event_type": "build_successful", "repository": "${{ github.repository }}"}' ${{ secrets.WEBHOOK_URL }}
