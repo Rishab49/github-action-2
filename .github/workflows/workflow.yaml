@@ -33,9 +33,9 @@ jobs:
         run: docker push rajrishab/github-action-2
 
 
-       - name: Trigger Webhook
-         uses: appleboy/webhook-action@master
-         with:
+      - name: Trigger Webhook
+        uses: appleboy/webhook-action@master
+        with:
           url: ${{ secrets.WEBHOOK_URL }}
           payload: |
             {
