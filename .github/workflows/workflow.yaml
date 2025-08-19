@@ -33,3 +33,5 @@ jobs:
         run: docker push rajrishab/github-action-2
 
 
+      - name: trigger jenkins
+        run: curl -X POST -H "Content-Type: application/json" -d '{"event_type": "build_successful", "repository": "${{ github.repository }}"}' ${{ secrets.WEBHOOK_URL }}
